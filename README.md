@@ -66,10 +66,6 @@ git push -u origin <your_branch_name>
 2. Congratulations! 🎉 Sit and relax, you've made your contribution to <a href="https://github.com/snt-club/DSA-Bootcamp-CPP" title="DSA-Bootcamp-CPP">DSA Bootcamp CPP</a>. 💥
 ---
 
-## `Stargazers Over Time 📊📈` 
-
-[![Stargazers over time](https://starchart.cc/snt-club/DSA-Bootcamp-CPP.svg)](https://starchart.cc/snt-club/DSA-Bootcamp-CPP)
-
 ## [`MIT LICENSE 📜`](https://github.com/snt-club/DSA-Bootcamp-CPP/blob/master/LICENSE)
 ```css
 MIT License
