@@ -1,78 +1,84 @@
-#include<bits/stdc++.h>
-
+#include<iostream>
 using namespace std;
-#define MAX 1000
 
 class Stack{
-	int top;
-public:
-	int stackarr[MAX];
-	Stack(){
-		top = -1;
-	}
-	bool push(int ele);
-	int pop();
-	int peek();
-	bool isEmpty();
-	void display();
+    int *arr;
+    int size;
+    int top = -1;
+    public:
+        Stack(int n){
+            size = n;
+            arr = new int[n];
+        }
+        void push(int a){
+            if(top!=size-1)
+                arr[++top] = a;
+            else cout<<endl<<"Stack Overflowed!!"<<endl;
+        }
+        void pop(){
+            if(!isEmpty()){
+                top--;
+                cout<<"Element Popped Successfully!!"<<endl;
+            }  
+            else cout<<endl<<"Stack is already Empty!!"<<endl;
+        }
+        bool isEmpty(){
+            if(top == -1)
+                return true;
+            else
+                return false;
+        }
+        void print(){
+            for(int i=0;i<=top;i++)  cout<<arr[i]<<" ";
+            cout<<endl;
+        }
+
 };
 
-bool Stack::push(int element){
-	if(top >= (MAX - 1)){
-		cout<<"Stack Overflow"<<endl;
-		return false;
-	}
-	else{
-		stackarr[++top] = element;
-		cout<<element<<"Pushed successfully"<<endl;
-		return true;
-	}
-}
-
-int Stack::pop(){
-	if(top == -1){
-		cout<<"Empty stack";
-		return 0;
-	}
-	else{
-		int ele = stackarr[top];
-		top--;
-		return ele;
-	}
-}
-
-int Stack::peek(){
-	if(top == -1){
-		cout<<"Empty Stack";
-		return 0;
-	}
-	else{
-		return stackarr[top];
-	}
-}
-
-bool Stack::isEmpty(){
-	if(top == -1){
-		return true;
-	}
-	else
-		return false;
-}
-
 int main(){
-	Stack* stack = new Stack();
-	stack->push(1);
-	stack->push(2);
-	stack->push(3);
-	stack->push(4);
-	stack->push(5);
-	cout<<"Current Top element in stack is: "<<stack->peek()<<endl;
-	cout<<stack->pop()<<" Popped from stack"<<endl;
-	cout<<"Current Top element in stack is: "<<stack->peek()<<endl;
-	cout<<"Elements present in stack are: ";
-	while(!stack->isEmpty()){
-		cout<<stack->peek()<<" ";
-		stack->pop();
-	}
-}
 
+    int size,num,choice_1;
+    char choice_2;
+
+    cout<<"Enter the size of stack : ";
+    cin>>size;
+    Stack S(size);
+
+    do{
+        cout<<endl<<"Things to do : "<<endl;
+        cout<<"1.Push an element"<<endl;
+        cout<<"2.Pop an element"<<endl;
+        cout<<"3.Check if the stack is empty"<<endl;
+        cout<<"4.Print the stack"<<endl;
+        cout<<"5.Exit"<<endl;
+
+        cout<<"Enter your choice : "<<endl;
+        cin>>choice_1;
+
+        switch(choice_1){
+
+            case 1  :   cout<<"Enter value to push : ";
+                        cin>>num;
+                        S.push(num); 
+                        break;
+            case 2  :   S.pop();
+                        break;
+            case 3  :   {
+                            int check = S.isEmpty();
+                            if(check == 1) cout<<"Stack is Empty!!"<<endl;
+                            else    cout<<"Stack is not Empty"<<endl;
+                            break;
+                        }
+            case 4  :   S.print();
+                        break;
+            case 5  :   break;
+            default :   cout<<"Wrong Choice !!"<<endl;
+        }
+    
+        cout<<"Do you want to perform more task on stack(Y/N) : ";
+        cin>>choice_2;
+
+    }while(choice_2 == 'Y' || choice_2 == 'y');
+    
+    return 0;
+}
